@@ -19,8 +19,8 @@ conflicts=('arbiter')
 # 没源码，永远也出不来的包（大雾
 
 source=('runarbiter.sh'
-        'https://slanterns.net/arbiter.tar.zst')
-# 感谢群友 host ~放在根域名根目录）~
+        'https://github.com/leedagee/arbiter-distro/releases/download/v0.1/arbiter.tar.zst')
+# 哦，在这递归
 # arbiter.tar.zst 会包含
 # arbiter libaudio.so.2 libjpeg.so.62 libpng12.so.0
 # libqt-mt.so.3.3 libqt.so.3 libqui.so.1.0 fileter/
