@@ -1,8 +1,10 @@
-# Maintainer leedagee
+# Maintainer: leedagee <leedageea@gmail.com>
+# Contributor: Coelacanthus <liuhongwu2003@outlook.com>
 pkgname=arbiter-bin
+_pkgname=arbiter
 epoch=1
 pkgver=1.4
-pkgrel=515
+pkgrel=516
 # 臭包，但是 pkgrel++ 了
 
 pkgdesc='北京航空航天大学为 NOI Linux 开发的评测工具，用于各大 NOI 系列程序设计竞赛的评测'
@@ -11,7 +13,7 @@ url='http://www.noi.cn/newsview.html?id=267&hash=BDBDBE&type=11'
 license=('custom')
 # 没分发许可，xjb搞就行了
 
-depends=('lib32-libxt' 'lib32-libxinerama' 'lib32-libxft' 'lib32-gcc-libs' 'lib32-libxi' 'lib32-libxrandr' 'lib32-libxcursor')
+depends=('lib32-libxt' 'lib32-libxinerama' 'lib32-libxft' 'lib32-gcc-libs' 'lib32-libxi' 'lib32-libxrandr' 'lib32-libxcursor' 'lib32-libjpeg6-turbo' 'lib32-libpng12')
 # ldd 来的，谁知道对不对呢（
 
 provides=('arbiter')
@@ -19,7 +21,13 @@ conflicts=('arbiter')
 # 没源码，永远也出不来的包（大雾
 
 source=('runarbiter.sh'
+        'arbiter.desktop'
         'https://github.com/leedagee/arbiter-distro/releases/download/v0.1/arbiter.tar.zst')
+
+sha512sums=('889ad69acc1ea3e20ecca4068004f3fea238f6399103987b314bca2364c099cc1cda9c3dd98b543589b454bb8875c4a2e1ba04599eeb253157e8aa40bc4abef3'
+            '67cae34b0cadc6406f90a26b9cd45bfad8f157f152895dd7fb3a78c227499a1ae2c0a95f4729816cabdc5aeeef7ae21858e27831eda48faca2091849e1ebf061'
+            '65fcb7773579a97113f69d298d5bca94643aaaae5ff0fe7350a5858a25cd94655ab3061048fe08eeb822915ca95613d72df3e0f73a24e605fb8e3854f5dcc931')
+
 # 哦，在这递归
 # arbiter.tar.zst 会包含
 # arbiter libaudio.so.2 libjpeg.so.62 libpng12.so.0
@@ -35,18 +43,12 @@ package() {
 
     install -m755 "$srcdir/libqt-mt.so.3.3" "$pkgdir/usr/lib/arbiter/lib/libqt-mt.so.3.3"
     ln -s "libqt-mt.so.3.3" "$pkgdir/usr/lib/arbiter/lib/libqt-mt.3"
-    
+
     install -m755 "$srcdir/libqui.so.1.0" "$pkgdir/usr/lib/arbiter/lib/libqui.so.1.0"
     ln -s "libqui.so.1.0" "$pkgdir/usr/lib/arbiter/lib/libqui.1"
 
     install -m755 "$srcdir/libaudio.so.2" "$pkgdir/usr/lib32/libaudio.so.2"
     ln -s "libaudio.so.2" "$pkgdir/usr/lib32/libaudio.so"
-
-    install -m755 "$srcdir/libjpeg.so.62" "$pkgdir/usr/lib32/libjpeg.so.62"
-    # 为难 # libjpeg.so.8.2.2 was owned by lib32-libjpeg-turbo
-
-    install -m755 "$srcdir/libpng12.so.0" "$pkgdir/usr/lib32/libpng12.so.0"
-    ln -s "libpng12.so.0" "$pkgdir/usr/lib32/libpng12"
 
     install -m755 "$srcdir/libqt.so.3" "$pkgdir/usr/lib32/libqt.so.3"
     ln -s "libqt.so.3" "$pkgdir/usr/lib32/libqt.so"
@@ -55,6 +57,6 @@ package() {
     cp -r $srcdir/filter $pkgdir/usr/lib/arbiter
 
     install -m755 "$srcdir/runarbiter.sh" "$pkgdir/usr/bin/arbiter"
+    
+    install -D -m755 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
-md5sums=('6b0d4c98fa90eb78cd7a3ab8daa76d2d'
-         '07707ce5f8272a5b14df95b3cfe7c62a')

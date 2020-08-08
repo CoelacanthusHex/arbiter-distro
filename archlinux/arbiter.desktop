@@ -1,0 +1,21 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Arbiter
+Type=Application
+GenericName=Arbiter is an evaluation tool developed by Beijing University of Aeronautics and Astronautics for NOI Linux
+GenericName[zh_CN]=Arbiter 是北京航空航天大学为 NOI Linux 开发的评测工具
+GenericName[zh_TW]=Arbiter 是北京航空航天大學為 NOI Linux 開發的評測工具
+GenericName[ja]=アービターは、北漢大学がNOI Linux用に開発した評価ツールです
+Comment=Arbiter is an evaluation tool developed by Beijing University of Aeronautics and Astronautics for NOI Linux, which is used for evaluation of major NOI series programming competitions
+Comment[zh_CN]=Arbiter 是北京航空航天大学为 NOI Linux 开发的评测工具，用于各大 NOI 系列程序设计竞赛的评测
+Comment[zh_TW]=Arbiter 是北京航空航天大學為 NOI Linux 開發的評測工具，用於各大 NOI 系列程序設計競賽的評測
+GenericName[ja]=アービターは、北京航空宇宙大学がNOI Linux向けに開発した評価ツールで、主要なNOIシリーズプログラミング競技の評価に使用されます
+Keywords=OI;Qt;Judge;
+Keywords[zh_CN]=OI;Qt;评测;
+Keywords[ja]=OI;Qt;評価;
+Categories=Tools;
+Terminal=false
+Path=/usr/bin
+Exec=arbiter
+Icon=arbiter
