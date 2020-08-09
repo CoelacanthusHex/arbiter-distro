@@ -16,6 +16,9 @@ license=('custom')
 depends=('lib32-libxt' 'lib32-libxinerama' 'lib32-libxft' 'lib32-gcc-libs' 'lib32-libxi' 'lib32-libxrandr' 'lib32-libxcursor' 'lib32-libjpeg6-turbo' 'lib32-libpng12')
 # ldd 来的，谁知道对不对呢（
 
+optdepends=('gcc: C and C++ support'
+            'fpc: Pascal support')
+
 provides=('arbiter')
 conflicts=('arbiter')
 # 没源码，永远也出不来的包（大雾
@@ -57,6 +60,6 @@ package() {
     cp -r $srcdir/filter $pkgdir/usr/lib/arbiter
 
     install -m755 "$srcdir/runarbiter.sh" "$pkgdir/usr/bin/arbiter"
-    
+
     install -D -m755 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
